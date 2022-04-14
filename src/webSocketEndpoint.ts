@@ -49,11 +49,14 @@ export default class WebSocketEndpoint extends EventEmitter implements IEndpoint
     }
 
     private connect() {
+        console.log("SELAMMMMM")
         if (this.state === State.Closed)
             return // The socket was already closed, abort
 
+        console.log("SELAMMMMM2")
         this.routingIdReceived = false
-        this.socket = new WebSocket(this.address, ['ZWS2.0'])
+        this.socket = new WebSocket(this.address)
+        console.log("SELAMMMMM3")
         this.socket.binaryType = "arraybuffer"
         this.socket.onopen = this.onOpen.bind(this)
         this.socket.onclose = this.onClose.bind(this)
